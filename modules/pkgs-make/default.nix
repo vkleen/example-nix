@@ -27,7 +27,7 @@ let
 
     nixpkgsPath =
         bootPkgs.fetchFromGitHub {
-            owner = "NixOS";
+            owner = "vkleen";
             repo = "nixpkgs";
             inherit rev sha256;
         };

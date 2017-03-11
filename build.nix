@@ -6,32 +6,18 @@ let
     #
     pkgsMakeArgs = {
         # git describe: 16.09-beta-11812-gfa03b8279f
-        rev = "fa03b8279fa9b544c29c97eaa5263163b6716046";
-        sha256 = "1n8mwwg14xhm4arxafzfmf0wbr8smkgdvaagirxpni77jci81ar3";
+        rev = "3bc9a5d8260430606b28b2692bdc6655a75dcfa6";
+        sha256 = "10163h6v3z38mvmmkw23i8ylylpc2fh2mck18i1afamq6ipam16s";
     };
 
-    # Library for making our packages (local copy)
-    #
-    pkgsMake = import modules/pkgs-make;
-
-    # Alternatively, we can use the default Nixpkgs to pull a remote copy.
-    # A remote copy allows us to share this Nix library with other projects.
-    # Below we use `fetchFromGitHub`, but Nixpkgs has many other "fetch"
-    # functions if you store your copy somewhere other than GitHub [FETCH].
-    #
-    # [FETCH] https://github.com/NixOS/nixpkgs/tree/master/pkgs/build-support
-    #
-    #pkgsMake =
-    #    let
-    #        pkgs-make-path =
-    #            (import <nixpkgs> {}).fetchFromGitHub {
-    #                owner = "shajra";
-    #                repo = "example-nix";
-    #                rev = "67affc85332894bb8892c9fe98bc9f378d663b90";
-    #                sha256 = "1aps3bppzwg9vs9nq3brmxvn6dccwlrwbwq0i37m8k0a1g4446j6";
-    #            };
-    #    in
-    #    import (pkgs-make-path + "/modules/pkgs-make");
+    pkgsMake = let
+      pkg-make-path = (import <nixpkgs> {}).fetchFromGitHub {
+        owner = "vkleen";
+        repo = "example-nix";
+        rev = "86583bf002db6f71c11a644c978b0eda23e6617b";
+        sha256 = "10163h6v3z38mvmmkw23i8ylylpc2fh2mck18i1afamq6ipam16s";
+      };
+      in import (pkgs-make-path + "/modules/pkgs-make");
 
     # `pkgs-make` doesn't have a lot of code, but it does hide away enough
     # complexity to make this usage site simple and compact.
