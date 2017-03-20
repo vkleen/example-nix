@@ -7,7 +7,7 @@ let
             overlay = import ./overrides/nixpkgs;
             srcFilter = p: t:
                 baseNameOf p != "result" && baseNameOf p != ".git";
-            haskellArgs = {};
+            haskellArgs = p: {};
         };
 
 in
@@ -36,7 +36,7 @@ let
 
     morePkgs = self: super:
         let
-            hArgs = { nixpkgs = self; inherit pkgs; } // haskellArgs;
+            hArgs = { nixpkgs = self; inherit pkgs; } // haskellArgs self;
             h = import ./haskell.nix hArgs;
             extnPkgs = import ./tools self.callPackage;
         in
