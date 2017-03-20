@@ -15,6 +15,7 @@ let
                     nixpkgs.haskellPackages.cabal2nix
                     nixpkgs.haskellPackages.cabal-install
                     nixpkgs.haskellPackages.ghcid
+                    nixpkgs.haskellPackages.old-time
                 ];
         };
 

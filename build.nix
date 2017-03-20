@@ -11,11 +11,11 @@ let
     };
 
     pkgsMake = let
-      pkg-make-path = (import <nixpkgs> {}).fetchFromGitHub {
+      pkgs-make-path = (import <nixpkgs> {}).fetchFromGitHub {
         owner = "vkleen";
         repo = "example-nix";
-        rev = "86583bf002db6f71c11a644c978b0eda23e6617b";
-        sha256 = "10163h6v3z38mvmmkw23i8ylylpc2fh2mck18i1afamq6ipam16s";
+        rev = "0a3a29c1505bff955fd897a0b8447cd244b2e644";
+        sha256 = "19rds1zxis8svgf1g1yyah9xyhmmzg7nnh6fx4zyma0h2k5hgj6q";
       };
       in import (pkgs-make-path + "/modules/pkgs-make");
 
